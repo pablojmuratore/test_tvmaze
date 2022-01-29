@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Test TvMaze</string>
+    <string name="search">Search</string>
+    <string name="enter_search_query">Enter search query</string>
+    <string name="clear_icon">Clear icon</string>
+    <string name="loading">Loading</string>
+</resources>
