@@ -16,7 +16,10 @@ fun NavGraphBuilder.showsListComposable(
 
         ShowsListScreen(
             navController = navController,
-            viewModel = viewModel
+            viewModel = viewModel,
+            onShowInfoClicked = { showInfo ->
+                navController.navigate(AppScreens.ShowDetailScreen.generateRoute(showInfo.show.id))
+            }
         )
     }
 }

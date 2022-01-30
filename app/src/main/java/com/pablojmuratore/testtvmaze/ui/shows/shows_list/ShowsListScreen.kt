@@ -13,19 +13,22 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.pablojmuratore.testtvmaze.R
+import com.pablojmuratore.testtvmaze.model.ShowInfo
 import com.pablojmuratore.testtvmaze.model.data_states.ShowsInfoState
 import com.pablojmuratore.testtvmaze.ui.components.search_bar.SearchBar
 
 @Composable
 fun ShowsListScreen(
     navController: NavHostController,
-    viewModel: ShowsListViewModel
+    viewModel: ShowsListViewModel,
+    onShowInfoClicked: (showInfo: ShowInfo) -> Unit
 ) {
     ShowsListScreenUI(
         searchQuery = viewModel.searchQuery,
         onSearchQueryChanged = viewModel::onSearchQueryChanged,
         onSearchQuerySearchClicked = viewModel::onSearchQuerySearchClicked,
-        showsInfoState = viewModel.showsInfoState
+        showsInfoState = viewModel.showsInfoState,
+        onShowInfoClicked = onShowInfoClicked
     )
 }
 
@@ -34,7 +37,8 @@ fun ShowsListScreenUI(
     searchQuery: String = "",
     onSearchQueryChanged: (searchQuery: String) -> Unit = {},
     onSearchQuerySearchClicked: (searchQuery: String) -> Unit = {},
-    showsInfoState: ShowsInfoState = ShowsInfoState.Undefined
+    showsInfoState: ShowsInfoState = ShowsInfoState.Undefined,
+    onShowInfoClicked: (showInfo: ShowInfo) -> Unit = {}
 ) {
     Column() {
         SearchBar(
@@ -54,7 +58,10 @@ fun ShowsListScreenUI(
                         .padding(vertical = 8.dp)
                 ) {
                     items(showsInfoState.showsInfo) { showInfo ->
-                        ShowListItem(showInfo)
+                        ShowListItem(
+                            showInfo = showInfo,
+                            onShowInfoClicked = onShowInfoClicked
+                        )
                     }
                 }
             }

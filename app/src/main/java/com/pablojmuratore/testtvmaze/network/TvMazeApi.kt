@@ -1,12 +1,14 @@
 package com.pablojmuratore.testtvmaze.network
 
 import com.pablojmuratore.testtvmaze.BuildConfig
+import com.pablojmuratore.testtvmaze.model.Show
 import com.pablojmuratore.testtvmaze.model.ShowInfo
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 private val moshi = Moshi.Builder()
@@ -27,9 +29,16 @@ object TvMazeApi : ITvMazeApi {
 
         return retrofitService.searchShows(completeQuery)
     }
+
+    override suspend fun loadShowDetail(showId: Long): Show {
+        return retrofitService.loadShowDetail(showId)
+    }
 }
 
 interface ITvMazeRetrofit {
     @GET("/search/shows")
     suspend fun searchShows(@Query("q") query: String): List<ShowInfo>
+
+    @GET("shows/{show_id}?embed=episodes")
+    suspend fun loadShowDetail(@Path("show_id") showId: Long): Show
 }

@@ -6,4 +6,10 @@ sealed class AppScreens(val route: String) {
     }
 
     object ShowsListScreen : AppScreens(route = "shows_list_screen")
+
+    object ShowDetailScreen : AppScreens(route = "show_detail_screen/{id}") {
+        fun generateRoute(showId: Long): String {
+            return this.route.replace("{$PARAM_ID}", showId.toString())
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package com.pablojmuratore.testtvmaze.repositories
 
+import com.pablojmuratore.testtvmaze.model.Show
 import com.pablojmuratore.testtvmaze.model.ShowInfo
 import com.pablojmuratore.testtvmaze.network.ITvMazeApi
 
@@ -8,5 +9,9 @@ class RemoteShowsRepository(
 ) : IRemoteShowsRepository {
     override suspend fun searchShows(query: String): List<ShowInfo> {
         return tvMazeApi.searchShows(query)
+    }
+
+    override suspend fun loadShowDetail(showId: Long): Show {
+        return tvMazeApi.loadShowDetail(showId)
     }
 }

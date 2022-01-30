@@ -20,7 +20,7 @@ import com.pablojmuratore.testtvmaze.model.ShowInfo
 @Composable
 fun ShowListItem(
     showInfo: ShowInfo,
-    onShowClicked: (showInfo: ShowInfo) -> Unit = {}
+    onShowInfoClicked: (showInfo: ShowInfo) -> Unit = {}
 ) {
     Surface(
         elevation = 4.dp
@@ -31,7 +31,7 @@ fun ShowListItem(
                 .background(MaterialTheme.colors.background)
                 .height(96.dp)
                 .clickable {
-                    onShowClicked(showInfo)
+                    onShowInfoClicked(showInfo)
                 }
                 .padding(8.dp),
             contentAlignment = Alignment.CenterStart
@@ -53,8 +53,6 @@ fun ShowListItem(
                         data = R.drawable.ic_baseline_local_movies_24
                     )
                 }
-
-                Log.d("---x", "show: ${showInfo.show.name} - url: $posterUrl")
 
                 Image(
                     modifier = Modifier

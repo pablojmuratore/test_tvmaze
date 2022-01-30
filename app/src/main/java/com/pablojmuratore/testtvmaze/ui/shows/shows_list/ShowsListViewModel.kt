@@ -1,6 +1,5 @@
 package com.pablojmuratore.testtvmaze.ui.shows.shows_list
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
