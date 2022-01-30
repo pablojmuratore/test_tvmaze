@@ -13,7 +13,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
 import com.pablojmuratore.testtvmaze.R
 import com.pablojmuratore.testtvmaze.model.ShowInfo
-import com.pablojmuratore.testtvmaze.ui.components.ShowPoster
+import com.pablojmuratore.testtvmaze.ui.components.Poster
 
 @Composable
 fun ShowListItem(
@@ -38,10 +38,11 @@ fun ShowListItem(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 val posterUrl: String? = showInfo.show.image?.medium ?: null
-                ShowPoster(
-                    posterUrl = posterUrl,
-                    dimensionResource(id = R.dimen.show_list_item_width),
-                    dimensionResource(id = R.dimen.show_list_item_height)
+                Poster(
+                    modifier = Modifier
+                        .width(dimensionResource(id = R.dimen.show_list_item_width))
+                        .height(dimensionResource(id = R.dimen.show_list_item_height)),
+                    posterUrl = posterUrl
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(

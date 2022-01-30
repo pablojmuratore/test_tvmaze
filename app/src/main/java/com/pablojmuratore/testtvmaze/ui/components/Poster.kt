@@ -1,19 +1,15 @@
 package com.pablojmuratore.testtvmaze.ui.components
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.unit.Dp
 import coil.compose.rememberImagePainter
 import com.pablojmuratore.testtvmaze.R
 
 @Composable
-fun ShowPoster(
-    posterUrl: String? = null,
-    width: Dp = dimensionResource(id = R.dimen.poster_width),
-    height: Dp = dimensionResource(id = R.dimen.poster_height)
+fun Poster(
+    modifier: Modifier,
+    posterUrl: String? = null
 ) {
     val posterImage = if (!posterUrl.isNullOrBlank()) {
         rememberImagePainter(
@@ -30,11 +26,7 @@ fun ShowPoster(
     }
 
     Image(
-        modifier = Modifier
-            .size(
-                width = width,
-                height = height
-            ),
+        modifier = modifier,
         painter = posterImage,
         contentDescription = null
     )

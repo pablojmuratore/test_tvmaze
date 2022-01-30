@@ -9,7 +9,8 @@ import com.pablojmuratore.testtvmaze.model.Episode
 
 @Composable
 fun ShowEpisodesViewer(
-    episodes: List<Episode> = emptyList()
+    episodes: List<Episode> = emptyList(),
+    onEpisodeClicked: (episode: Episode) -> Unit = {}
 ) {
     val seasons = episodes.sortedBy { it.number }.sortedBy { it.season }.groupBy { it.season }
 
@@ -22,7 +23,10 @@ fun ShowEpisodesViewer(
                 SeasonListItem(season = season.key)
             }
             items(season.value) { episode ->
-                EpisodeListItem(episode = episode)
+                EpisodeListItem(
+                    episode = episode,
+                    onEpisodeClicked = onEpisodeClicked
+                )
             }
         }
     }

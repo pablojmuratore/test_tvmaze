@@ -9,5 +9,5 @@ import com.pablojmuratore.testtvmaze.R
 fun SeasonListItem(
     season: Int
 ) {
-    Text(text = "${stringResource(id = R.string.season)}: $season")
+    Text(text = stringResource(id = R.string.season_number, season))
 }

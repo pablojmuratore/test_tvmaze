@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 class Show(
     val id: Long,
     val name: String,
-    val image: ShowImage? = null,
+    val image: PosterImage? = null,
     val schedule: ShowSchedule,
     val genres: List<String> = emptyList(),
     val summary: String? = null,
