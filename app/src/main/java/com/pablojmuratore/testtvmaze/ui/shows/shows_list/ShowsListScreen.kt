@@ -2,6 +2,7 @@ package com.pablojmuratore.testtvmaze.ui.shows.shows_list
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Text
@@ -9,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.pablojmuratore.testtvmaze.R
 import com.pablojmuratore.testtvmaze.model.data_states.ShowsInfoState
@@ -47,7 +49,9 @@ fun ShowsListScreenUI(
             }
             is ShowsInfoState.Loaded -> {
                 LazyColumn(
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(vertical = 8.dp)
                 ) {
                     items(showsInfoState.showsInfo) { showInfo ->
                         ShowListItem(showInfo)

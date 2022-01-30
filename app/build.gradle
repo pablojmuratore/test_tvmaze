@@ -100,6 +100,11 @@ dependencies {
     // Testing
     def testing_coroutines_version = "1.5.1"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$testing_coroutines_version"
+
+    // Coil
+    def coil_compose_version = "1.4.0"
+    implementation("io.coil-kt:coil-compose:$coil_compose_version")
+
 }
 
 kapt {

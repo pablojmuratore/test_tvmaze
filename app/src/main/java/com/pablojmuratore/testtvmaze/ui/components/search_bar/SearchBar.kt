@@ -59,7 +59,6 @@ fun SearchBar(
         Button(
             modifier = Modifier.padding(horizontal = 8.dp),
             onClick = {
-                Log.d("---x", "click: $value")
                 onSearchClicked(value)
             }
         ) {

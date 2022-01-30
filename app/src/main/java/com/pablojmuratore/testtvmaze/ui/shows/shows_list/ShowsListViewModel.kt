@@ -29,8 +29,6 @@ class ShowsListViewModel
 
             val showsInfo = remoteShowsRepository.searchShows(query)
 
-            Log.d("---x", "loaded: ${showsInfo.size}")
-
             showsInfoState = ShowsInfoState.Loaded(showsInfo)
         }
     }
@@ -40,7 +38,6 @@ class ShowsListViewModel
     }
 
     fun onSearchQuerySearchClicked(searchQuery: String) {
-        Log.d("---x", "onSearchQuerySearchClicked ( ShowsListViewModel ) - searchQuery: $searchQuery")
         searchShows(searchQuery)
     }
 }
