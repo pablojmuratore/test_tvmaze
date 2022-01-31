@@ -9,6 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.pablojmuratore.testtvmaze.model.Episode
 
@@ -39,4 +40,12 @@ fun EpisodeListItem(
             overflow = TextOverflow.Ellipsis
         )
     }
+}
+
+@Preview
+@Composable
+fun EpisodeListItemPreview() {
+    val mockEpisode = Episode(1, "Episode 1", 3, 5, summary = "This is the summary for the mock episode.")
+
+    EpisodeListItem(episode = mockEpisode)
 }
