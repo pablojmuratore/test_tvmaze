@@ -1,6 +1,6 @@
-package com.pablojmuratore.testtvmaze.ui.components.search_bar
+package com.pablojmuratore.testtvmaze.ui.components
 
-import android.util.Log
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -26,10 +26,13 @@ fun SearchBar(
     val focusRequester = FocusRequester()
 
     Row(
-        modifier = Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        TextField(
+        OutlinedTextField(
             modifier = Modifier
                 .focusRequester(focusRequester = focusRequester)
                 .weight(1.0f),
@@ -57,7 +60,6 @@ fun SearchBar(
         )
 
         Button(
-            modifier = Modifier.padding(horizontal = 8.dp),
             onClick = {
                 onSearchClicked(value)
             }

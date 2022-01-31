@@ -16,11 +16,15 @@ class ShowsListViewModel
 @Inject constructor(
     private val remoteShowsRepository: IRemoteShowsRepository
 ) : ViewModel() {
-    var searchQuery by mutableStateOf<String>("")
+    var searchQuery by mutableStateOf("")
         private set
 
     var showsInfoState by mutableStateOf<ShowsInfoState>(ShowsInfoState.Undefined)
         private set
+
+    init {
+        searchShows("Simpsons")
+    }
 
     private fun searchShows(query: String = "") {
         viewModelScope.launch {

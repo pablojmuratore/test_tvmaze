@@ -2,7 +2,7 @@ package com.pablojmuratore.testtvmaze.model
 
 import com.squareup.moshi.Json
 
-class Show(
+data class Show(
     val id: Long,
     val name: String,
     val image: PosterImage? = null,

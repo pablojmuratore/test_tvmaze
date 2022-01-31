@@ -1,4 +1,4 @@
-package com.pablojmuratore.testtvmaze.model
+package com.pablojmuratore.testtvmaze.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -32,6 +31,7 @@ fun ShowScheduleDaysViewer(
             Box(
                 modifier = Modifier
                     .padding(vertical = 4.dp, horizontal = 2.dp)
+//                    .size(dimensionResource(id = R.dimen.schedule_day_size))
                     .size(dimensionResource(id = R.dimen.schedule_day_size))
                     .background(color = backgroundColor, shape = CircleShape),
                 contentAlignment = Alignment.Center

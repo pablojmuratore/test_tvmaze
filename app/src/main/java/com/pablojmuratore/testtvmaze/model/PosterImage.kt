@@ -1,5 +1,5 @@
 package com.pablojmuratore.testtvmaze.model
 
-class PosterImage(
+data class PosterImage(
     val medium: String
 )

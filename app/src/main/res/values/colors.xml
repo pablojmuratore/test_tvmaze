@@ -9,10 +9,13 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="mid_gray">#ff999999</color>
+    <color name="very_light_gray">#ffe0e0e0</color>
 
-    <color name="schedule_day_text_on">@color/white</color>
-    <color name="schedule_day_background_on">@color/black</color>
+    <color name="schedule_day_text_on">@color/black</color>
+    <color name="schedule_day_background_on">@color/teal_200</color>
     <color name="schedule_day_text_off">@color/black</color>
     <color name="schedule_day_background_off">@color/mid_gray</color>
+
+    <color name="season_list_item_background">@color/very_light_gray</color>
 
 </resources>

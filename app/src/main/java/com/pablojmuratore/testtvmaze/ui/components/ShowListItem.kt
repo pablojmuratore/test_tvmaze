@@ -1,4 +1,4 @@
-package com.pablojmuratore.testtvmaze.ui.shows.shows_list
+package com.pablojmuratore.testtvmaze.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -40,8 +40,8 @@ fun ShowListItem(
                 val posterUrl: String? = showInfo.show.image?.medium ?: null
                 Poster(
                     modifier = Modifier
-                        .width(dimensionResource(id = R.dimen.show_list_item_width))
-                        .height(dimensionResource(id = R.dimen.show_list_item_height)),
+                        .width(dimensionResource(id = R.dimen.poster_list_item_width))
+                        .height(dimensionResource(id = R.dimen.poster_list_item_height)),
                     posterUrl = posterUrl
                 )
                 Spacer(modifier = Modifier.width(8.dp))

@@ -21,14 +21,14 @@ fun EpisodeListItem(
         modifier = Modifier
             .fillMaxWidth()
             .height(56.dp)
-            .padding(vertical = 4.dp, horizontal = 8.dp)
+            .padding(vertical = 4.dp)
             .clickable {
                 onEpisodeClicked(episode)
             },
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            modifier = Modifier.width(32.dp),
+            modifier = Modifier.width(24.dp),
             text = "${episode.number}",
             textAlign = TextAlign.Right
         )

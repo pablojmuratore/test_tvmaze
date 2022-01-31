@@ -3,7 +3,8 @@
     <string name="search">Search</string>
     <string name="enter_search_query">Enter search query</string>
     <string name="clear_icon">Clear icon</string>
-    <string name="loading">Loading</string>
+    <string name="loading_shows">Loading shows</string>
+    <string name="loading_show">Loading show</string>
 
     <string name="summary">Summary</string>
     <string name="no_summary_message">No summary specified</string>
@@ -12,4 +13,6 @@
     <string name="season_number">Season %1$d</string>
     <string name="episode_number">Episode %1$d</string>
     <string name="no_episode_detail">No episode detail</string>
+
+    <string name="time_string">%1$s hs</string>
 </resources>
