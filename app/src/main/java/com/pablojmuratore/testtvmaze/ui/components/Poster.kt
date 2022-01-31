@@ -8,7 +8,7 @@ import com.pablojmuratore.testtvmaze.R
 
 @Composable
 fun Poster(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     posterUrl: String? = null
 ) {
     val posterImage = if (!posterUrl.isNullOrBlank()) {

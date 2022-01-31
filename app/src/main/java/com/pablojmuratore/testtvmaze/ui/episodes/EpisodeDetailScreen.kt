@@ -1,14 +1,12 @@
 package com.pablojmuratore.testtvmaze.ui.episodes
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -22,26 +20,57 @@ import com.pablojmuratore.testtvmaze.ui.components.Poster
 fun EpisodeDetailScreen(
     episode: Episode
 ) {
-//    val annotatedSummary = HtmlCompat.fromHtml(episode.summary ?: "", HtmlCompat.FROM_HTML_MODE_LEGACY)
+    val posterUrl: String? = episode.image?.medium ?: null
 
-    Column(
-        modifier = Modifier
-            .padding(
-                horizontal = 8.dp,
-                vertical = 16.dp
-            )
-    ) {
-        val episodeSummary = HtmlCompat.fromHtml(episode.summary ?: stringResource(id = R.string.no_summary_message), HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
-
-        episode.image?.medium?.let { posterUrl ->
-            Poster(
+    BoxWithConstraints {
+        if (maxWidth < 600.dp) {
+            Column(
+                modifier = Modifier
+                    .padding(
+                        horizontal = 8.dp,
+                        vertical = 16.dp
+                    )
+            ) {
+                PosterContent(posterUrl = posterUrl)
+                EpisodeInfoContent(episode = episode)
+            }
+        } else {
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(100.dp),
-                posterUrl = posterUrl
-            )
-            Divider(modifier = Modifier.height(16.dp), color = Color.Transparent)
+                    .padding(16.dp)
+            ) {
+                PosterContent(posterUrl = posterUrl)
+                Divider(modifier = Modifier.width(16.dp), color = Color.Transparent)
+                EpisodeInfoContent(
+                    modifier = Modifier.weight(1.0f),
+                    episode = episode
+                )
+            }
         }
+    }
+}
+
+@Composable
+fun PosterContent(
+    modifier: Modifier = Modifier
+        .width(dimensionResource(id = R.dimen.poster_width_portrait))
+        .height(dimensionResource(id = R.dimen.poster_height_portrait)),
+    posterUrl: String?
+) {
+    Poster(modifier = modifier, posterUrl = posterUrl)
+}
+
+@Composable
+fun EpisodeInfoContent(
+    modifier: Modifier = Modifier,
+    episode: Episode
+) {
+    val episodeSummary = HtmlCompat.fromHtml(episode.summary ?: stringResource(id = R.string.no_summary_message), HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
+
+    Column(
+        modifier = modifier
+    ) {
         Text(
             text = episode.name,
             fontSize = 20.sp,
@@ -51,6 +80,6 @@ fun EpisodeDetailScreen(
         Text(text = stringResource(id = R.string.episode_number, episode.number))
         Text(text = stringResource(id = R.string.season_number, episode.season))
         Divider(modifier = Modifier.height(8.dp), color = Color.Transparent)
-        Text( text = episodeSummary )
+        Text(text = episodeSummary)
     }
 }
