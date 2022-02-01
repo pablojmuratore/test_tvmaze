@@ -1,14 +1,18 @@
 package com.pablojmuratore.testtvmaze.ui.shows.show_detail
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -35,7 +39,9 @@ fun ShowDetailScreen(
 ) {
     ShowDetailScreenUI(
         modifier = modifier,
-        showState = viewModel.showState
+        showState = viewModel.showState,
+        isShowLiked = viewModel.isShowLiked,
+        onShowLiked = viewModel::onShowLiked
     )
 }
 
@@ -43,7 +49,9 @@ fun ShowDetailScreen(
 @Composable
 fun ShowDetailScreenUI(
     modifier: Modifier = Modifier,
-    showState: ShowState = ShowState.Undefined
+    showState: ShowState = ShowState.Undefined,
+    isShowLiked: Boolean = false,
+    onShowLiked: (show: Show, liked: Boolean) -> Unit = { show: Show, liked: Boolean -> }
 ) {
     val bottomSheetState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
     val scope = rememberCoroutineScope()
@@ -79,9 +87,9 @@ fun ShowDetailScreenUI(
             }
             is ShowState.Loaded -> {
                 val show = showState.show
-//                val showSummary = HtmlCompat.fromHtml(show.summary ?: stringResource(id = R.string.no_summary_message), HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
                 val posterUrl: String? = show.image?.medium ?: null
                 val episodes = show.embeddedData?.episodes ?: emptyList()
+                val likedIconColor = if (isShowLiked) colorResource(id = R.color.like_icon_selected) else colorResource(id = R.color.like_icon_unselected)
 
                 BoxWithConstraints() {
                     if (maxWidth < 600.dp) {
@@ -91,7 +99,21 @@ fun ShowDetailScreenUI(
                                 .padding(8.dp)
                                 .verticalScroll(screenScrollState)
                         ) {
-                            PosterContent(posterUrl = posterUrl)
+                            Row {
+                                PosterContent(posterUrl = posterUrl)
+                                Divider(modifier = Modifier.weight(1.0f), color = Color.Transparent)
+                                Icon(
+                                    modifier = Modifier
+                                        .size(56.dp)
+                                        .padding(16.dp)
+                                        .clickable {
+                                            onShowLiked(show, !isShowLiked)
+                                        },
+                                    imageVector = Icons.Filled.Favorite,
+                                    tint = likedIconColor,
+                                    contentDescription = null
+                                )
+                            }
                             Divider(modifier = Modifier.height(16.dp), color = Color.Transparent)
                             ShowInfoContent(show = show)
                             Divider(modifier = Modifier.height(8.dp), color = Color.Transparent)
@@ -124,7 +146,23 @@ fun ShowDetailScreenUI(
                                     posterUrl = posterUrl
                                 )
                                 Divider(modifier = Modifier.width(16.dp), color = Color.Transparent)
-                                ShowInfoContent(show = show)
+                                Column {
+                                    Row {
+                                        Divider(modifier = Modifier.weight(1.0f), color = Color.Transparent)
+                                        Icon(
+                                            modifier = Modifier
+                                                .size(56.dp)
+                                                .padding(16.dp)
+                                                .clickable {
+                                                    onShowLiked(show, !isShowLiked)
+                                                },
+                                            imageVector = Icons.Filled.Favorite,
+                                            tint = likedIconColor,
+                                            contentDescription = null
+                                        )
+                                    }
+                                    ShowInfoContent(show = show)
+                                }
                             }
                             Divider(modifier = Modifier.height(8.dp), color = Color.Transparent)
 
@@ -175,9 +213,11 @@ fun ShowInfoContent(show: Show) {
         Row(
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
-                text = stringResource(id = R.string.time_string, show.schedule.time)
-            )
+            if (show.schedule.time.isNotBlank()) {
+                Text(
+                    text = stringResource(id = R.string.time_string, show.schedule.time)
+                )
+            }
             Divider(modifier = Modifier.weight(1.0f), color = Color.Transparent)
             ShowScheduleDaysViewer(show.schedule.days)
         }

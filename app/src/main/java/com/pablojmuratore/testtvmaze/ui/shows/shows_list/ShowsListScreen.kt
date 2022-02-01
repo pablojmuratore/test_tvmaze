@@ -14,6 +14,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.pablojmuratore.testtvmaze.R
+import com.pablojmuratore.testtvmaze.model.Show
 import com.pablojmuratore.testtvmaze.model.ShowInfo
 import com.pablojmuratore.testtvmaze.model.data_states.ShowsInfoState
 import com.pablojmuratore.testtvmaze.ui.components.SearchBar
@@ -31,7 +32,9 @@ fun ShowsListScreen(
         onSearchQueryChanged = viewModel::onSearchQueryChanged,
         onSearchQuerySearchClicked = viewModel::onSearchQuerySearchClicked,
         showsInfoState = viewModel.showsInfoState,
-        onShowInfoClicked = onShowInfoClicked
+        likedShows = viewModel.likedShows,
+        onShowInfoClicked = onShowInfoClicked,
+        onShowLiked = viewModel::onShowLiked
     )
 }
 
@@ -43,13 +46,24 @@ fun ShowsListScreenUI(
     onSearchQueryChanged: (searchQuery: String) -> Unit = {},
     onSearchQuerySearchClicked: (searchQuery: String) -> Unit = {},
     showsInfoState: ShowsInfoState = ShowsInfoState.Undefined,
-    onShowInfoClicked: (showInfo: ShowInfo) -> Unit = {}
+    likedShows: ShowsListViewModel.LikedShowsStateFlow = ShowsListViewModel.LikedShowsStateFlow.Undefined,
+    onShowInfoClicked: (showInfo: ShowInfo) -> Unit = {},
+    onShowLiked: (show: Show, liked: Boolean) -> Unit = { show: Show, liked: Boolean -> }
 ) {
     val keyboardController = LocalSoftwareKeyboardController.current
 
     Column(
         modifier = modifier
     ) {
+        val likedShowIds: List<Long> = when (likedShows) {
+            is ShowsListViewModel.LikedShowsStateFlow.Loaded -> {
+                likedShows.likedShows.map { it.showId }
+            }
+            else -> {
+                emptyList()
+            }
+        }
+
         SearchBar(
             value = searchQuery,
             onQueryChanged = onSearchQueryChanged,
@@ -73,9 +87,13 @@ fun ShowsListScreenUI(
                         .padding(vertical = 8.dp)
                 ) {
                     items(showsInfoState.showsInfo) { showInfo ->
+                        val isShowLiked = showInfo.show.id in likedShowIds
+
                         ShowListItem(
                             showInfo = showInfo,
-                            onShowInfoClicked = onShowInfoClicked
+                            isShowLiked = isShowLiked,
+                            onShowInfoClicked = onShowInfoClicked,
+                            onShowLiked = onShowLiked
                         )
                     }
                 }
