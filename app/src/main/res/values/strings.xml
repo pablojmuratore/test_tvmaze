@@ -15,4 +15,24 @@
     <string name="no_episode_detail">No episode detail</string>
 
     <string name="time_string">%1$s hs</string>
+
+    <string name="configure_pin_number">Configure PIN number</string>
+    <string name="use_pin_number">Use PIN number</string>
+    <string name="use_fingerprint">Use fingerprint</string>
+
+    <string name="pin_undefined_message">Please enter a new PIN (4 digits)</string>
+    <string name="enter_pin">Enter PIN</string>
+    <string name="confirm_pin">Confirm PIN</string>
+    <string name="select_login_method_message">Login method is undefined.\nPlease select a login method</string>
+    <string name="pin_number">PIN number</string>
+    <string name="fingerprint">Fingerprint</string>
+    <string name="set_pin">Set PIN</string>
+    <string name="login">Login</string>
+    <string name="validate">Validate</string>
+    <string name="entered_pin_is_invalid">Entered PIN is invalid</string>
+
+    <string name="must_enroll_fingerprint_message">You must enroll fingerprint to use it</string>
+    <string name="scan_fingerprint_message">Please scan your fingerprint</string>
+    <string name="cancel">Cancel</string>
+
 </resources>

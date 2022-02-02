@@ -12,4 +12,13 @@ sealed class AppScreens(val route: String) {
             return this.route.replace("{$PARAM_ID}", showId.toString())
         }
     }
+
+    // login
+
+    object LoginMainScreen : AppScreens(route = "login_main_screen")
+
+    object ConfigurePinNumberScreen : AppScreens(route = "configure_pin_number_screen")
+    object UsePinNumberScreen : AppScreens(route = "use_pin_number_screen")
+
+    object UseFingerprintScreen : AppScreens(route = "use_fingerprint_screen")
 }

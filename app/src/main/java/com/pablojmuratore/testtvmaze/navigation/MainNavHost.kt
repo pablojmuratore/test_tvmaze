@@ -3,19 +3,27 @@ package com.pablojmuratore.testtvmaze.navigation
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.pablojmuratore.testtvmaze.ui.shows.show_detail.showDetailComposable
-import com.pablojmuratore.testtvmaze.ui.shows.shows_list.showsListComposable
 
 @Composable
 fun MainNavHost(
-    navController: NavHostController
+    navController: NavHostController,
+    onUseFingerprint: () -> Unit = {},
+    isFingerprintAuthenticated: Boolean = false
 ) {
+    val startDestination = if (isFingerprintAuthenticated) SHOWS_NAV_GRAPH else LOGIN_NAV_GRAPH
+
     NavHost(
         navController = navController,
-        startDestination = AppScreens.ShowsListScreen.route
+        startDestination = startDestination
     ) {
-        showsListComposable(navController)
+        loginNavGraph(
+            navController,
+            onLoginPassed = {
+                navController.navigate(SHOWS_NAV_GRAPH)
+            },
+            onUseFingerprint = onUseFingerprint
+        )
 
-        showDetailComposable(navController)
+        showsNavGraph(navController)
     }
 }
