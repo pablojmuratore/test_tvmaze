@@ -1,7 +1,7 @@
 package com.pablojmuratore.testtvmaze.repositories
 
 import android.content.Context
-import com.pablojmuratore.testtvmaze.model.LikedShow
+import com.pablojmuratore.testtvmaze.shows.models.LikedShow
 import kotlinx.coroutines.flow.Flow
 
 interface ILocalDataRepository {

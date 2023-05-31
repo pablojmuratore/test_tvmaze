@@ -1,7 +1,7 @@
 package com.pablojmuratore.testtvmaze.repositories
 
-import com.pablojmuratore.testtvmaze.model.Show
-import com.pablojmuratore.testtvmaze.model.ShowInfo
+import com.pablojmuratore.testtvmaze.shows.models.Show
+import com.pablojmuratore.testtvmaze.shows.models.ShowInfo
 
 interface IRemoteShowsRepository {
     suspend fun searchShows(query: String = ""): List<ShowInfo>

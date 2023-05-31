@@ -2,8 +2,8 @@ package com.pablojmuratore.testtvmaze.repositories
 
 import android.content.Context
 import androidx.datastore.preferences.core.edit
-import com.pablojmuratore.testtvmaze.database.AppDatabase
-import com.pablojmuratore.testtvmaze.model.LikedShow
+import com.pablojmuratore.testtvmaze.room.AppDatabase
+import com.pablojmuratore.testtvmaze.shows.models.LikedShow
 import com.pablojmuratore.testtvmaze.utils.TvMazeDataStore
 import com.pablojmuratore.testtvmaze.utils.TvMazeDataStore.Companion.tvMazeDataStore
 import kotlinx.coroutines.flow.Flow

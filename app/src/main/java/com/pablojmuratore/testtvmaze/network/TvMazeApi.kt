@@ -1,8 +1,8 @@
 package com.pablojmuratore.testtvmaze.network
 
 import com.pablojmuratore.testtvmaze.BuildConfig
-import com.pablojmuratore.testtvmaze.model.Show
-import com.pablojmuratore.testtvmaze.model.ShowInfo
+import com.pablojmuratore.testtvmaze.shows.models.Show
+import com.pablojmuratore.testtvmaze.shows.models.ShowInfo
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit

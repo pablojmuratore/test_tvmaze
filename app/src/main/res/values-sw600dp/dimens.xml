@@ -4,4 +4,6 @@
     <dimen name="poster_height">400dp</dimen>
     <dimen name="poster_width_portrait">300dp</dimen>
     <dimen name="poster_height_portrait">180dp</dimen>
+
+    <dimen name="schedule_day_size">24.dp</dimen>
 </resources>
