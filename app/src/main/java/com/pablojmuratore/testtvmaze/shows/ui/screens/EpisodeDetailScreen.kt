@@ -1,6 +1,5 @@
 package com.pablojmuratore.testtvmaze.shows.ui.screens
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

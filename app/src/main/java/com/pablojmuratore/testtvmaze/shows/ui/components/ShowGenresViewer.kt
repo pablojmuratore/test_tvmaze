@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.pablojmuratore.testtvmaze.ui.components.Chip
+import com.pablojmuratore.testtvmaze.core_ui.components.Chip
 
 @Composable
 fun ShowGenresViewer(

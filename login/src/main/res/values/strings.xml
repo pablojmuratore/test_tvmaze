@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pin_undefined_message">Please enter a new PIN (4 digits)</string>
+    <string name="enter_pin">Enter PIN</string>
+    <string name="set_pin">Set PIN</string>
+    <string name="clear_icon">Clear icon</string>
+    <string name="configure_pin_number">Configure PIN number</string>
+    <string name="use_pin_number">Use PIN number</string>
+    <string name="login">Login</string>
+    <string name="use_fingerprint">Use fingerprint</string>
+    <string name="must_enroll_fingerprint_message">You must enroll fingerprint to use it</string>
+    <string name="validate">Validate</string>
+    <string name="entered_pin_is_invalid">Entered PIN is invalid</string>
+</resources>

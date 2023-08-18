@@ -14,3 +14,14 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Test TvMaze"
 include ':app'
+include ':core'
+include ':core-biometrics'
+include ':core-datastore'
+include ':core-network'
+include ':core-room'
+include ':core-ui'
+include ':login'
+include ':room'
+include ':shows'
+include ':shows-database'
+include ':shows-network'

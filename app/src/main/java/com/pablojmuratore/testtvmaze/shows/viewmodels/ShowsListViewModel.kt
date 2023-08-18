@@ -4,11 +4,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.pablojmuratore.testtvmaze.repositories.ILocalDataRepository
-import com.pablojmuratore.testtvmaze.repositories.IRemoteShowsRepository
 import com.pablojmuratore.testtvmaze.shows.data_states.ShowsInfoState
 import com.pablojmuratore.testtvmaze.shows.models.LikedShow
 import com.pablojmuratore.testtvmaze.shows.models.Show
+import com.pablojmuratore.testtvmaze.shows.repositories.IShowsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -17,10 +16,9 @@ import javax.inject.Inject
 @HiltViewModel
 class ShowsListViewModel
 @Inject constructor(
-    private val remoteShowsRepository: IRemoteShowsRepository,
-    private val localDataRepository: ILocalDataRepository
+    private val showsRepository: IShowsRepository
 ) : ViewModel() {
-    private var _searchQuery = mutableStateOf<String>("")
+    private var _searchQuery = mutableStateOf("")
     val searchQuery by _searchQuery
 
     private var _showsInfoState = mutableStateOf<ShowsInfoState>(ShowsInfoState.Undefined)
@@ -36,7 +34,7 @@ class ShowsListViewModel
 
     private fun initLikedShowsList() {
         viewModelScope.launch {
-            localDataRepository.getLikedShows().collectLatest { loadedLikedShows ->
+            showsRepository.getLikedShows().collectLatest { loadedLikedShows ->
                 _likedShows.value = LikedShowsStateFlow.Loaded(loadedLikedShows)
             }
         }
@@ -46,7 +44,7 @@ class ShowsListViewModel
         viewModelScope.launch {
             _showsInfoState.value = ShowsInfoState.Loading
 
-            val showsInfo = remoteShowsRepository.searchShows(query)
+            val showsInfo = showsRepository.searchShows(query)
 
             _showsInfoState.value = ShowsInfoState.Loaded(showsInfo)
         }
@@ -62,7 +60,7 @@ class ShowsListViewModel
 
     fun onShowLiked(show: Show, liked: Boolean) {
         viewModelScope.launch {
-            localDataRepository.setShowLiked(show.id, liked)
+            showsRepository.setShowLiked(show.id, liked)
         }
     }
 
