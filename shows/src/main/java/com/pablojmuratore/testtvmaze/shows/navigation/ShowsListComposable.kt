@@ -10,7 +10,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.pablojmuratore.testtvmaze.R
+import com.pablojmuratore.testtvmaze.shows.R
 import com.pablojmuratore.testtvmaze.shows.models.ShowInfo
 import com.pablojmuratore.testtvmaze.shows.ui.screens.ShowsListScreen
 import com.pablojmuratore.testtvmaze.shows.viewmodels.ShowsListViewModel
@@ -25,7 +25,7 @@ fun NavGraphBuilder.showsListComposable(
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(text = stringResource(id = R.string.app_name)) }
+                    title = { Text(text = stringResource(id = R.string.shows)) }
                 )
             }
         ) { innerPadding ->

@@ -11,7 +11,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -27,6 +26,7 @@ fun EpisodeListItem(
             .fillMaxWidth()
             .height(56.dp)
             .padding(vertical = 4.dp)
+            .padding(start = 16.dp)
             .clickable {
                 onEpisodeClicked(episode)
             },
@@ -34,10 +34,9 @@ fun EpisodeListItem(
     ) {
         Text(
             modifier = Modifier.width(24.dp),
-            text = "${episode.number}",
-            textAlign = TextAlign.Right,
+            text = "${episode.number}"
         )
-        Spacer(modifier = Modifier.width(16.dp))
+        Spacer(modifier = Modifier.width(8.dp))
         Text(
             text = episode.name,
             maxLines = 2,

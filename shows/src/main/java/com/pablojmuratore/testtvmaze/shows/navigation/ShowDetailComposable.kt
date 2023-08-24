@@ -11,14 +11,12 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.pablojmuratore.testtvmaze.R
 import com.pablojmuratore.testtvmaze.shows.ui.screens.ShowDetailScreen
 import com.pablojmuratore.testtvmaze.shows.viewmodels.ShowDetailViewModel
 
@@ -44,7 +42,7 @@ fun NavGraphBuilder.showDetailComposable(
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(text = stringResource(id = R.string.app_name)) },
+                    title = { Text(text = "show") },
                     navigationIcon = {
                         IconButton(onClick = {
                             navController.popBackStack()

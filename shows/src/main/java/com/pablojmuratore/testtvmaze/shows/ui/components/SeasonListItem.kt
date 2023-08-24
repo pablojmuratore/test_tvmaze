@@ -17,8 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.pablojmuratore.testtvmaze.R
-import com.pablojmuratore.testtvmaze.ui.theme.TestTvMazeTheme
+import com.pablojmuratore.testtvmaze.shows.R
 
 @Composable
 fun SeasonListItem(
@@ -27,7 +26,7 @@ fun SeasonListItem(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(36.dp)
+            .height(48.dp)
             .background(
                 color = if (!isSystemInDarkTheme()) {
                     colorResource(id = R.color.season_list_item_background)
@@ -36,7 +35,7 @@ fun SeasonListItem(
                 },
                 shape = RoundedCornerShape(size = 8.dp)
             )
-            .padding(horizontal = 8.dp),
+            .padding(horizontal = 16.dp),
         contentAlignment = Alignment.CenterStart,
     ) {
         Text(
@@ -47,18 +46,14 @@ fun SeasonListItem(
     }
 }
 
-@Preview()
+@Preview
 @Composable
 fun SeasonListItemPreviewLight() {
-    TestTvMazeTheme(darkTheme = false) {
-        SeasonListItem(season = 1)
-    }
+    SeasonListItem(season = 1)
 }
 
-@Preview()
+@Preview
 @Composable
 fun SeasonListItemPreviewDark() {
-    TestTvMazeTheme(darkTheme = true) {
-        SeasonListItem(season = 1)
-    }
+    SeasonListItem(season = 1)
 }

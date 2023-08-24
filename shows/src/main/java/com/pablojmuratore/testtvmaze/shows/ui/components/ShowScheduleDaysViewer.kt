@@ -14,7 +14,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.pablojmuratore.testtvmaze.R
+import com.pablojmuratore.testtvmaze.shows.R
 
 @Composable
 fun ShowScheduleDaysViewer(

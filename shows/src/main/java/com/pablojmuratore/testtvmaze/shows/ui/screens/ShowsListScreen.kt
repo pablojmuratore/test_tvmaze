@@ -13,8 +13,8 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.pablojmuratore.testtvmaze.R
 import com.pablojmuratore.testtvmaze.core_ui.components.SearchBar
+import com.pablojmuratore.testtvmaze.shows.R
 import com.pablojmuratore.testtvmaze.shows.data_states.ShowsInfoState
 import com.pablojmuratore.testtvmaze.shows.models.Show
 import com.pablojmuratore.testtvmaze.shows.models.ShowInfo
@@ -65,6 +65,7 @@ fun ShowsListScreenUI(
             is ShowsListViewModel.LikedShowsStateFlow.Loaded -> {
                 likedShows.likedShows.map { it.showId }
             }
+
             else -> {
                 emptyList()
             }

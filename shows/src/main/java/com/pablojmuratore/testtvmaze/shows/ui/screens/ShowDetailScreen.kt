@@ -23,7 +23,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.pablojmuratore.testtvmaze.R
+import com.pablojmuratore.testtvmaze.shows.R
 import com.pablojmuratore.testtvmaze.shows.data_states.ShowState
 import com.pablojmuratore.testtvmaze.shows.models.Episode
 import com.pablojmuratore.testtvmaze.shows.models.Show
@@ -110,7 +110,7 @@ fun ShowDetailScreenUI(
                     Column(
                         modifier = modifier
                             .fillMaxSize()
-                            .padding(8.dp)
+                            .padding(vertical = 8.dp, horizontal = 16.dp)
                             .verticalScroll(screenScrollState)
                     ) {
                         Row {

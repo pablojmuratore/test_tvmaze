@@ -23,7 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
-import com.pablojmuratore.testtvmaze.R
+import com.pablojmuratore.testtvmaze.shows.R
 import com.pablojmuratore.testtvmaze.shows.models.Show
 import com.pablojmuratore.testtvmaze.shows.models.ShowInfo
 

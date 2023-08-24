@@ -17,7 +17,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.text.HtmlCompat
-import com.pablojmuratore.testtvmaze.R
+import com.pablojmuratore.testtvmaze.shows.R
 import com.pablojmuratore.testtvmaze.shows.models.Show
 
 @Composable

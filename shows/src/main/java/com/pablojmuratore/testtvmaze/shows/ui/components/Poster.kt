@@ -4,7 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import coil.compose.rememberAsyncImagePainter
-import com.pablojmuratore.testtvmaze.R
+import com.pablojmuratore.testtvmaze.shows.R
 
 @Composable
 fun Poster(
